@@ -78,6 +78,12 @@ public class ParkingSpace {
 		return parkingSlotList;
 	}
 	
+	public synchronized List<Ticket> getParkingTicketsBasedOnColor(String color){
+		List<Ticket> ticketListWithColor = CarColorToTicketMap.get(color);
+		
+		return ticketListWithColor;
+	}
+	
 	public synchronized List<String> getRegistrationNosWithColor(String color){
 		List<Ticket> ticketListWithColor = CarColorToTicketMap.get(color);
 		List<String> registrationNoList = new ArrayList<String>();
@@ -128,7 +134,7 @@ public class ParkingSpace {
 				List<Integer> parkingSlotList = parkingIns.getParkingSlotBasedOnColor(vals[1]);
 				for(int i=0;i<parkingSlotList.size();i++){
 					if(i!=0){
-						System.out.println(",");
+						System.out.print(",");
 					}
 					System.out.print(parkingSlotList.get(i));
 				}
